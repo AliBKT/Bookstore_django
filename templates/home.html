@@ -6,10 +6,10 @@
 {% endblock page_title %}
 
 
-{% block context %}
+{% block content %}
     {% if user.is_authenticated %}
          <p> Wellcom {{ user.username }} |   <a style="text-decoration: none" href="{% url 'logout'%}">Logout</a></p>
     {% else %}
-        <a href=" {% url 'login' %}">Login</a>
+        <a href=" {% url 'login' %}">Login</a> | <a href=" {% url 'signup' %}">Sign up</a>
     {% endif %}
-{% endblock context %}
+{% endblock content %}
