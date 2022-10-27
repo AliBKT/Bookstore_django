@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+
+{% block page_title %}
+    Home
+{% endblock page_title %}
+
+
+{% block context %}
+    {% if user.is_authenticated %}
+         <p> Wellcom {{ user.username }} |   <a style="text-decoration: none" href="{% url 'logout'%}">Logout</a></p>
+    {% else %}
+        <a href=" {% url 'login' %}">Login</a>
+    {% endif %}
+{% endblock context %}
