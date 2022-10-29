@@ -11,6 +11,6 @@
     {% if user.is_authenticated %}
          <p> Wellcom {{ user.username }} |   <a class="btn btn-info" href="{% url 'logout'%}">Logout</a></p>
     {% else %}
-        <a class="btn btn-primary" style="margin-right:1rem " href=" {% url 'login' %}">Login</a><a class="btn btn-info" href=" {% url 'signup' %}">Sign up</a>
+        <a class="btn btn-primary" style="margin-right:1rem " href=" {% url 'login' %}">Login</a><a class="btn btn-info" style="color: #fff" href=" {% url 'signup' %}">Sign up</a>
     {% endif %}
 {% endblock content %}
