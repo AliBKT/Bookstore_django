@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+
+
+{% block page_title %}
+    Book lists
+{% endblock page_title %}
+
+
+{% block content  %}
+    <div class="container" dir="rtl">
+        <h1>لیست کتاب ها</h1>
+        {% for book in books %}
+            <h4>{{ book.title }}</h4>
+            <p>{{ book.discription }}</p>
+            <span>{{ book.price }}</span>
+        {% endfor %}
+    </div>
+{% endblock content %}
+
