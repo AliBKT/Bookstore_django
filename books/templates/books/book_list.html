@@ -7,12 +7,12 @@
 
 
 {% block content  %}
-    <div class="container" dir="rtl">
+    <div class="container mt-3" dir="rtl">
         <h1>لیست کتاب ها</h1>
         {% for book in books %}
-            <h4>{{ book.title }}</h4>
+            <a style="text-decoration: none" href="{{ book.get_absolute_url }}"><h4>{{ book.title }}</h4></a>
             <p>{{ book.discription }}</p>
-            <span>{{ book.price }}</span>
+            <span>قیمت:{{ book.price }}</span>
         {% endfor %}
     </div>
 {% endblock content %}
