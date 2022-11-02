@@ -14,6 +14,9 @@
             <p>{{ book.discription }}</p>
             <span>قیمت:{{ book.price }}</span>
         {% endfor %}
+        <br><br>
+        <a style="text-decoration:none;" href="{% url 'add_book'%}">اضافه کردن کتاب</a>
+        <br><br><br>
     </div>
 {% endblock content %}
 

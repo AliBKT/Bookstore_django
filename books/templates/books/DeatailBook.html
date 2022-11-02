@@ -12,5 +12,7 @@
         <p>{{ book.discription }}</p>
         <h6>{{ book.author }}</h6>
         <span>{{ book.price }}</span>
+        <br>
+        <a style="text-decoration: none" href="{% url 'book_list'%}">لیست کتاب ها</a>
     </div>
 {% endblock content %}
