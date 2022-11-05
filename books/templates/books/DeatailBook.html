@@ -12,10 +12,10 @@
         <p>{{ book.discription }}</p>
         <h6>{{ book.author }}</h6>
         <span>{{ book.price }}</span>
-        <br>
+        <br><br>
         <a class="btn btn-warning" href="{% url 'update_book' book.id%}">ویرایش</a>
         <a class="btn btn-danger" style="margin-left: 1rem ;: " href="{% url 'delete_book' book.id%}">حذف</a>
-        <br>
+        <br><br><br>
         <a style="text-decoration: none" href="{% url 'book_list'%}">لیست کتاب ها</a>
     </div>
 {% endblock content %}

@@ -9,10 +9,12 @@
 {% block content  %}
     <div class="container mt-3" dir="rtl">
         <h1>لیست کتاب ها</h1>
+        <br>
         {% for book in books %}
             <a style="text-decoration: none" href="{{ book.get_absolute_url }}"><h4>{{ book.title }}</h4></a>
-            <p>{{ book.discription }}</p>
+            <p>{{ book.discription|truncatewords:50 }}</p>
             <span>قیمت:{{ book.price }}</span>
+            <br><br>
         {% endfor %}
         <br><br>
         <a style="text-decoration:none;" href="{% url 'add_book'%}">اضافه کردن کتاب</a>
