@@ -8,8 +8,9 @@ from .forms import BookForm
 
 
 class BookListView(generic.ListView):
-    template_name = "books/book_list.html"
     model = Book
+    paginate_by = 4
+    template_name = "books/book_list.html"
     context_object_name = 'books'
 
 
@@ -23,13 +24,13 @@ class BookCreateView(generic.CreateView):
     model = Book
     # form_class is optional if fields be defined
     # form_class = BookForm
-    fields = ['title', 'discription', 'author', 'price']
+    fields = ['title', 'discription', 'author', 'price', 'cover']
     template_name = "books/add_book.html"
 
 
 class BookUpdateView(generic.UpdateView):
     model = Book
-    fields = ['title', 'discription', 'author', 'price']
+    fields = ['title', 'discription', 'author', 'price', 'cover']
     template_name = "books/update_book.html"
 
 
