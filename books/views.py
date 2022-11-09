@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 from .models import Book
 from .forms import BookForm, CommentForm
@@ -44,21 +45,48 @@ def book_deatail_view(request, pk):
     })
 
 
-class BookCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Book
-    # form_class is optional if fields be defined
-    # form_class = BookForm
-    fields = ['title', 'discription', 'author', 'price', 'cover']
-    template_name = "books/add_book.html"
+"""
+ class BookCreateView(LoginRequiredMixin, generic.CreateView):
+     model = Book
+     # form_class is optional if fields be defined
+     # form_class = BookForm
+     fields = ['title', 'discription', 'author', 'price', 'cover']
+     template_name = "books/add_book.html"
+"""
 
 
-class BookUpdateView(LoginRequiredMixin, generic.UpdateView):
+@login_required
+def book_create_view(request):
+    if request.method == "POST":
+        book_form = BookForm(request.POST, request.FILES)
+        if book_form.is_valid():
+            new_book_form = book_form.save(commit=False)
+            new_book_form.user = request.user
+            new_book_form.save()
+            return redirect('book_deatail', new_book_form.id)
+    else:
+        book_form = BookForm()
+
+    return render(request, "books/add_book.html", {
+        'form': book_form,
+    })
+
+
+class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = Book
     fields = ['title', 'discription', 'author', 'price', 'cover']
     template_name = "books/update_book.html"
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
 
-class BookDeleteView(LoginRequiredMixin, generic.DeleteView):
+
+class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     model = Book
     template_name = "books/delete_book.html"
     success_url = reverse_lazy('book_list')
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
