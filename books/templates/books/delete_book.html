@@ -2,18 +2,22 @@
 
 
 {% block page_title %}
-    $SELECTION}
+    حذف {{ book.title }}
 {% endblock page_title %}
 
 
 {% block content %}
-    <div class="container">
-        <h4>حذف کتاب {{ book.title }}</h4>
-        <h6>آیا از حذف این کتاب مطمئن هستید؟</h6>
-        <form action="" method="post">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-danger" value="بله، مطمئنم">
-        </form>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card" style="width:600px">
+          <div class="card-body" style="text-align: center">
+            <h4 class="card-title">حذف کتاب {{ book.title }}</h4>
+            <p class="card-text">آیا از حذف این کتاب مطمئن هستید؟</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger mt-4" value="بله، مطمئنم">
+            </form>
+          </div>
+        </div>
     </div>
 {% endblock content %}
 
