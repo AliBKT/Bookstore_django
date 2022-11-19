@@ -7,7 +7,7 @@
 {% endblock page_title %}
 
 {% block img_title %}
-    <link rel="icon" href="{{ book.cover.url }}" >
+    <link rel="icon" href="{% if book.cover %} {{ book.cover.url }} {% endif %}" >
 {% endblock img_title %}
 
 {% block content %}
@@ -19,7 +19,7 @@
                 <div class="row w-sm-75 w-100">
                     <div class="col-xs-12 col-md-3 d-flex justify-content-center">
                         <div>
-                            {% if book.cover.url%}
+                            {% if book.cover %}
                                 <img src="{{ book.cover.url }}"
                                  class="img-fluid rounded-start" alt="...">
                             {% endif %}
