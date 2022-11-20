@@ -9,8 +9,8 @@ from django.contrib.auth import get_user_model
 class SignUpPageTest(TestCase):
 
     def test_signup_url_page(self):
-        respose = self.client.get('/accounts/signup/')
-        self.assertEqual(respose.status_code, 200)
+        response = self.client.get('/accounts/signup/')
+        self.assertEqual(response.status_code, 200)
 
     def test_signup_name_page(self):
         response = self.client.get(reverse('signup'))

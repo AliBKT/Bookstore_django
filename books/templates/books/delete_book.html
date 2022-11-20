@@ -1,9 +1,14 @@
 {% extends "_base.html" %}
 
-
+{% load static %}
 {% block page_title %}
     حذف {{ book.title }}
 {% endblock page_title %}
+
+
+{% block img_title %}
+    <link rel="icon" href="{% static 'icons/delete.png' %}" >
+{% endblock img_title %}
 
 
 {% block content %}

@@ -21,7 +21,7 @@ class BookListView(generic.ListView):
 #     template_name = "books/DeatailBook.html"
 #     context_object_name = 'book'
 @login_required
-def book_deatail_view(request, pk):
+def book_detail_view(request, pk):
     # get book object
     book = get_object_or_404(Book, pk=pk)
     # get cooments for book

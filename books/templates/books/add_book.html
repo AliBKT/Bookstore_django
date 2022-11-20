@@ -2,6 +2,12 @@
 {% load crispy_forms_tags %}
 
 
+{% load static %}
+{% block img_title %}
+    <link rel="icon" href="{% static 'icons/plus.svg' %}" >
+{% endblock img_title %}
+
+
 {% block page_title %}
     اضافه کردن کتاب
 {% endblock page_title %}
